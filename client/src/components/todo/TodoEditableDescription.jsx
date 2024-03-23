@@ -13,6 +13,7 @@ import {
     EditableInput
 } from "@chakra-ui/react";
 import {CheckIcon, CloseIcon} from "@chakra-ui/icons";
+import {useState} from "react";
 
 function EditableControls() {
     const {
@@ -33,13 +34,20 @@ function EditableControls() {
     ) : null;
 }
 
-const TodoEditableDescription = () => {
+const TodoEditableDescription = (props) => {
+
+    const [description, setDescription] = useState(props.description);
+    const handleSubmit = () => {
+        props.handleSubmit(description);
+    };
 
     return (
         <Editable
-            defaultValue={'Task Description'}
+            defaultValue={props.description}
             isPreviewFocusable={true}
-            selectAllOnFocus={true}>
+            selectAllOnFocus={true}
+            onSubmit={handleSubmit}
+            onChange={setDescription}>
             <Tooltip label="Click to edit" shouldWrapChildren={true}>
                 <EditablePreview
                     py={2}
