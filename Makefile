@@ -48,7 +48,7 @@ clean-backend:
 
 # Both
 run: build-frontend run-backend
+test: test-backend test-frontend
 clean: clean-frontend clean-backend
 build: build-frontend build-backend
 build-release: build-frontend build-backend-release
-
